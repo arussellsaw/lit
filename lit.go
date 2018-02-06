@@ -6,8 +6,8 @@ import (
 	"text/template"
 )
 
-func LittleUI(innerHTML string, fn func() (interface{}, error)) (http.Handler, error) {
-	t := template.Must(template.New("lit").Parse(tmplString))
+func LittleUI(wrapper, innerHTML string, fn func() (interface{}, error)) (http.Handler, error) {
+	t := template.Must(template.New("lit").Parse(wrapper))
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		p := page{
 			InnerHTML: innerHTML,
@@ -38,10 +38,10 @@ type page struct {
 	InnerHTML  string
 }
 
-var tmplString = `<!DOCTYPE html>
+var DefaultWrapper = `<!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="http://cdn.staging.avocet.io/internal-assets/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.com/libraries/bulma">
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script type="text/javascript">
 		var objectdata = {{.ObjectJSON}}
