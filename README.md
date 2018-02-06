@@ -3,9 +3,9 @@
 #### Little Interface Toolkit
 
 Lit is a toolkit to make your life easier when adding small UI endpoints to your services.
-Lit works via two components, a `Lit Wrapper` responsible for constructing the html, and injecting
-data into the page via templating, and `Inner HTML` which handles rendering the data injected by
-the wrapper. The current `DefaultWrapper` uses VueJS and Bulma.
+Lit works via two components, a `Lit Wrapper` that is responsible for loading JS dependencies
+and injecting JSON data into the page, and `Inner HTML` which handles rendering the data injected by
+the wrapper in whichever framework the wrapper provides. The current `DefaultWrapper` uses VueJS and Bulma.
 
 #### Example:
 
