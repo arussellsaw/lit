@@ -10,7 +10,7 @@ import (
 
 func main() {
 	b := packr.NewBox("./static")
-	litHandler, err := lit.LittleUI(b.String("example.html"), func() (interface{}, error) {
+	litHandler, err := lit.LittleUI(b.String("example.html"), func(r *http.Request) (interface{}, error) {
 		return foo{Foo: "foo", Bar: "bar"}, nil
 	})
 	if err != nil {
