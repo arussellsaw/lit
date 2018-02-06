@@ -5,10 +5,12 @@ import (
 	"net/http"
 
 	"github.com/avct/lit"
+	"github.com/gobuffalo/packr"
 )
 
 func main() {
-	litHandler, err := lit.LittleUI("example.html", func() (interface{}, error) {
+	b := packr.NewBox("./static")
+	litHandler, err := lit.LittleUI(b.String("example.html"), func() (interface{}, error) {
 		return foo{Foo: "foo", Bar: "bar"}, nil
 	})
 	if err != nil {

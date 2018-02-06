@@ -2,25 +2,15 @@ package lit
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"net/http"
-	"os"
 	"text/template"
 )
 
-func LittleUI(htmlPath string, fn func() (interface{}, error)) (http.Handler, error) {
+func LittleUI(innerHTML string, fn func() (interface{}, error)) (http.Handler, error) {
 	t := template.Must(template.New("lit").Parse(tmplString))
-	f, err := os.Open(htmlPath)
-	if err != nil {
-		return nil, err
-	}
-	buf, err := ioutil.ReadAll(f)
-	if err != nil {
-		return nil, err
-	}
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		p := page{
-			InnerHTML: string(buf),
+			InnerHTML: innerHTML,
 		}
 		v, err := fn()
 		if err != nil {
