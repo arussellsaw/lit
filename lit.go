@@ -48,7 +48,8 @@ type page struct {
 	InnerHTML  string
 }
 
-var tmplString = `<html>
+var tmplString = `<!DOCTYPE html>
+<html>
 <head>
 	<link rel="stylesheet" type="text/css" href="http://cdn.staging.avocet.io/internal-assets/styles.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
