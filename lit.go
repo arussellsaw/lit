@@ -41,7 +41,7 @@ type page struct {
 var DefaultWrapper = `<!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.com/libraries/bulma">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script type="text/javascript">
 		var objectdata = {{.ObjectJSON}}
