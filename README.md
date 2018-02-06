@@ -1,6 +1,6 @@
 # 🔥 lit 🔥
 
-#### Little Ui Toolkit
+#### Little Interface Toolkit
 
 Lit is a toolkit to make your life easier when adding small UI endpoints to your services.
 Lit works via two components, a `Lit Wrapper` responsible for constructing the html, and injecting
@@ -17,25 +17,25 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/avct/lit"
+	"github.com/arussellsaw/lit"
 	"github.com/gobuffalo/packr"
 )
 
 func main() {
-	b := packr.newbox("./static")
-	lithandler, err := lit.littleui(b.string("example.html"), func() (interface{}, error) {
-		return foo{foo: "foo", bar: "bar"}, nil
+	b := packr.NewBox("./static")
+	litHandler, err := lit.LittleUI(lit.DefaultWrapper, b.String("example.html"), func(r *http.Request) (interface{}, error) {
+		return foo{Foo: "foo", Bar: "bar"}, nil
 	})
 	if err != nil {
-		fmt.println(err)
+		fmt.Println(err)
 		return
 	}
-	http.listenandserve(":8080", lithandler)
+	http.ListenAndServe(":8080", litHandler)
 }
 
 type foo struct {
-	foo string
-	bar string
+	Foo string
+	Bar string
 }
 ```
 
