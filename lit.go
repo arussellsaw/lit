@@ -6,7 +6,9 @@ import (
 	"text/template"
 )
 
-func LittleUI(wrapper, innerHTML string, fn func() (interface{}, error)) (http.Handler, error) {
+type DataFunc func(r *http.Request) (interface{}, error)
+
+func LittleUI(wrapper, innerHTML string, fn DataFunc) (http.Handler, error) {
 	t := template.Must(template.New("lit").Parse(wrapper))
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		p := page{
